@@ -11,7 +11,7 @@ class BSTree {
         int nelem;
 	BSNode<T>* root;
 
-	BSNode<T>* search(BSNode<T>* n, T e){
+	BSNode<T>* search(BSNode<T>* n, T e) const {
 		if (n == nullptr){
 			throw std::runtime_error("Elemento no encontrado");
 		}
@@ -28,7 +28,7 @@ class BSTree {
 	BSNode<T>* insert(BSNode<T>* n, T e){
 		if (n == nullptr){
 			nelem++;
-			return new BSNode<T>(n);
+			return new BSNode<T>(e);
 		} else if (n->elem == e) {
 			throw std::runtime_error("Duplicated element");
 		} else if (n->elem < e) {
@@ -59,8 +59,10 @@ class BSTree {
 			if (n->left != nullptr && n->right != nullptr) { // 2 descendnientes
 				n->elem = max(n->left);
 				n->left = remove_max(n->left);
+				nelem--;
 			} else { // 1 o 0 descendientes
 				n = (n->left != nullptr) ? n->left : n->right;
+				nelem--;
 			}
 		}
 		return n;
