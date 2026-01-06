@@ -11,7 +11,9 @@ class TableEntry {
 	    V value;
 
 	    TableEntry(std::string key, V value) : key(key), value(value) {};
+
 	    TableEntry(std::string key) : key(key), value() {};
+
 	    TableEntry() : key("") {};
 
 	    friend bool operator==(const TableEntry<V> &te1, const TableEntry<V> &te2){
