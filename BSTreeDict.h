@@ -15,7 +15,7 @@ class BSTreeDict: public Dict<V> {
 
     public:
         BSTreeDict() {
-		tree = new BSTree<TableEntry<V>>*();
+		tree = new BSTree<TableEntry<V>>();
 	}
 
 	~BSTreeDict() {
@@ -31,7 +31,7 @@ class BSTreeDict: public Dict<V> {
 		return search(key);
 	}
 
-       	int entries() override {
+       	int entries() const override {
 		return tree->size();
 	}
 
@@ -40,7 +40,8 @@ class BSTreeDict: public Dict<V> {
 	}
 
 	V search(std::string key) override {
-		return (*this)[key];
+		TableEntry<V> entry = tree->search(TableEntry<V>(key));
+                return entry.value;
 	}
 
 	V remove(std::string key) override {
