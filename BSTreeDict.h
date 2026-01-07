@@ -31,7 +31,7 @@ class BSTreeDict: public Dict<V> {
 		return search(key);
 	}
 
-       	int entries() const override {
+    int entries() const override {
 		return tree->size();
 	}
 
